@@ -3,24 +3,29 @@
 import { useAuth } from "@/components/auth-provider";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Header from "./_components/header";
 
-function AuthLayout({ children }) {
+
+function EventsLayout({ children }) {
   const router = useRouter();
   const { user, authLoaded } = useAuth();
 
   useEffect(() => {
-    if (authLoaded && user) {
-      router.push('/events');
+    if (!user) {
+      router.push('/');
     }
   }, [authLoaded, user, router]);
 
   if (!authLoaded) return null;
 
-  return (
-    <div className="h-screen flex justify-center">
+return (
+  <div className="flex flex-col min-h-screen bg-gray-100">
+      <Header />
+      <main className="flex-grow">
       {children}
-    </div>
-  );
-}
+        </main>
 
-export default AuthLayout;
+  </div>
+  )
+}
+export default EventsLayout

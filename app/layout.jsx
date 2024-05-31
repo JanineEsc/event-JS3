@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <AuthContextProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
